@@ -31,51 +31,9 @@ Ver tutorial de instalación en [ecommerce](https://github.com/nmarsollier/ecomm
 
 Pip es un gestor de paquetes que nos va a permitir instalar las dependencias de python. [pypi.org](https://pypi.org/project/pip/)
 
-Ubuntu
+Es recomendable instalarlo y aprender a usarlo si vamos a desarrollar en python
 
-```bash
-sudo apt-get install python-pip
-```
-
-### Pyenv
-
-Pyenv nos permite tener varias versiones de python instaladas en nuestro sistema. Es util para no generar conflicto con los programas que tengamos funcionando actualmente. [github.com/pyenv/](https://github.com/pyenv/pyenv-installer)
-
-Ubuntu
-
-```bash
-curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
-```
-
-Editar archivo .bashrc y agregar:
-
-```bash
-export PATH="~/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-```
-
-Antes de instalar cualquier version de python en nuestro sistema tenemos que ver que version tenemos actualmente instalada. Lo hacemos con :
-
-```bash
-python --version
-```
-
-Si tenemos alguna version instalada tenemos que instalarla en pyenv y establecerla como predeterminada (Reemplazar 2.7.6 por la que sea actual) :
-
-```bash
-pyenv install 2.7.6
-pyenv global 2.7.6
-```
-
-### Python 3.7.4
-
-A partir de ahora todo lo que ejecutamos, va a ser dentro de la carpeta catalog
-
-```bash
-pyenv install 3.7.4
-python --version
-```
+### Python 3.7+
 
 Ahora vamos a instalar las librerías de nuestro proyecto. Parados en el directorio catalog ejecutamos
 
@@ -114,12 +72,20 @@ apidoc-markdown2 -p public -o README-API.md
 
 Esto nos genera una carpeta con la documentación, esta carpeta debe estar presente desde donde se ejecute el servidor, el mismo busca ./public para localizarlo, aunque se puede configurar desde el archivo de properties.
 
-## Archivo config.ini
+## Variables de entorno
 
-Este archivo permite configurar los parámetros del servidor, ver ejemplos en config.ini.
-El servidor busca el archivo "./config.ini".
+SERVER_PORT : Puerto en escucha de este servidor (3002)
+AUTH_SERVICE_URL : Auth service host (localhost)
+AUTH_SERVICE_PORT : Auth service port (3000)
+RABBIT_URL : Rabbit host (localhost)
+MONGO_URL : Url de Mongo (localhost)
+MONGO_PORT : Puerto de Mongo (27017)
 
-### Build
+### Pyenv
+
+Pyenv nos permite tener varias versiones de python instaladas en nuestro sistema. Es util para no generar conflicto con los programas que tengamos funcionando actualmente. [github.com/pyenv/](https://github.com/pyenv/pyenv-installer)
+
+## Docker
 
 ```bash
 docker build --no-cache -t dev-catalog-python .

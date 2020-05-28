@@ -1,0 +1,1 @@
+define({  "name": "Catalog Service",  "version": "0.1.0",  "description": "Microservicio de Catálogo",  "title": "Microservicio de Catálogo",  "url": "",  "sampleUrl": false,  "defaultVersion": "0.0.0",  "apidoc": "0.3.0",  "generator": {    "name": "apidoc",    "time": "2020-05-28T17:22:18.933Z",    "url": "http://apidocjs.com",    "version": "0.17.6"  }});

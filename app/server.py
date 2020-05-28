@@ -14,13 +14,9 @@ class MainApp:
     self.flask_app = flask.Flask(__name__, static_folder = '../public')
     CORS(self.flask_app, supports_credentials=True, automatic_options=True)
 
-    self._generate_api_doc()
     self._init_routes()
     self._init_rabbit()
     self._init_articles()
-
-  def _generate_api_doc(self):
-    os.system("apidoc -i ./ -o ./public")
 
   def _init_routes(self):
     # Servidor de archivos estáticos de apidoc
@@ -28,7 +24,6 @@ class MainApp:
     @self.flask_app.route('/<path:path>')
     def api_index(path):
         return flask.send_from_directory('../public', path)
-
 
     @self.flask_app.route('/')
     def index():
@@ -44,4 +39,4 @@ class MainApp:
     return self.flask_app
 
   def start(self):
-    self.flask_app.run(port=config.get_server_port())
+    self.flask_app.run(host= '0.0.0.0', port=config.get_server_port())
