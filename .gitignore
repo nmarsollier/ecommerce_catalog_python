@@ -1,5 +1,5 @@
 .vscode
 *.pyc
-public
 test
+node_modules
 .pytest_cache/

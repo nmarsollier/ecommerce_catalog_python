@@ -1,7 +1,8 @@
-### Si queres sabes mas sobre mi:
+# Si queres sabes mas sobre mi:
+
 [Nestor Marsollier](https://github.com/nmarsollier/profile)
 
-# Microservicio de Catalogo de Productos
+## Microservicio de Catalogo de Productos
 
 Es un microservicio que permite manejar el catalogo de artículos, precios y stock, es un proyecto académico, esta simplificado al máximo; que en un ambiente de microservicios, tanto precios como stock deberian llevarse en un microservicio separado.
 
@@ -117,3 +118,19 @@ Esto nos genera una carpeta con la documentación, esta carpeta debe estar prese
 
 Este archivo permite configurar los parámetros del servidor, ver ejemplos en config.ini.
 El servidor busca el archivo "./config.ini".
+
+### Build
+
+```bash
+docker build --no-cache -t dev-catalog-python .
+```
+
+### El contenedor
+
+```bash
+# Mac | Windows
+docker run -it --name dev-catalog-python -p 3002:3002 -v $PWD:/app dev-catalog-python
+
+# Linux
+docker run -it --add-host host.docker.internal:172.17.0.1 --name dev-catalog-python -p 3002:3002 -v $PWD:/app dev-catalog-python
+```
